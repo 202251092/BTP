@@ -104,8 +104,8 @@ Create a `.env` file in the root directory:
 # Backend
 DATABASE_URL="postgresql://user:password@localhost:5432/greenroot?schema=public"
 REDIS_URL="redis://localhost:6379"
-GEMINI_API_KEY="AIzaSy..."
-COMPANY_NAME="GreenRoot Botanicals"
+GEMINI_API_KEY="..."
+COMPANY_NAME="........"
 PORT=3000
 
 # Frontend
