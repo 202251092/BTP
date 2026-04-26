@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import "tw-animate-css";
+
+/* -------------------------------------------------------------------------- */
+/* THEME VARIABLES                            */
+/* -------------------------------------------------------------------------- */
+@layer base {
+  :root {
+    /* --- Your Custom "Green/Dark" Theme (Default) --- */
+    /* If you want the app to be dark by default, we put the dark colors here */
+    
+    --background: 160 20% 8%;
+    --foreground: 60 10% 95%;
+
+    --card: 160 15% 12%;
+    --card-foreground: 60 10% 95%;
+
+    --popover: 160 15% 12%;
+    --popover-foreground: 60 10% 95%;
+
+    --primary: 145 40% 45%;
+    --primary-foreground: 160 20% 8%;
+
+    --secondary: 160 12% 18%;
+    --secondary-foreground: 60 10% 95%;
+
+    --muted: 160 10% 22%;
+    --muted-foreground: 160 10% 60%;
+
+    --accent: 25 70% 55%;
+    --accent-foreground: 160 20% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 10% 95%;
+
+    --border: 160 15% 20%;
+    --input: 160 15% 18%;
+    --ring: 145 40% 45%;
+
+    --radius: 1rem;
+
+    /* Custom tokens */
+    --glass: 160 15% 15% / 0.6;
+    --glass-border: 160 20% 30% / 0.3;
+    --glass-highlight: 160 30% 50% / 0.1;
+
+    --gradient-primary: linear-gradient(135deg, hsl(145 45% 40%), hsl(165 35% 50%));
+    --gradient-accent: linear-gradient(135deg, hsl(25 70% 50%), hsl(15 65% 55%));
+    --gradient-glass: linear-gradient(135deg, hsl(160 20% 18% / 0.8), hsl(160 15% 12% / 0.6));
+    --gradient-bot: linear-gradient(145deg, hsl(160 25% 20% / 0.9), hsl(160 20% 15% / 0.7));
+    --gradient-user: linear-gradient(145deg, hsl(145 40% 42%), hsl(155 35% 38%));
+
+    --shadow-glass: 0 8px 32px hsl(160 30% 5% / 0.4);
+    --shadow-glow: 0 0 40px hsl(145 40% 45% / 0.15);
+    --shadow-soft: 0 4px 20px hsl(160 20% 5% / 0.3);
+
+    --sidebar-background: 160 15% 10%;
+    --sidebar-foreground: 60 10% 95%;
+    --sidebar-primary: 145 40% 45%;
+    --sidebar-primary-foreground: 160 20% 8%;
+    --sidebar-accent: 160 12% 18%;
+    --sidebar-accent-foreground: 60 10% 95%;
+    --sidebar-border: 160 15% 20%;
+    --sidebar-ring: 145 40% 45%;
+  }
+
+  /* --- Optional: Light Mode Override --- */
+  /* If you ever add class="light", these will take over. 
+     Currently, I have commented this out to FORCE your Green Theme everywhere. */
+  /* .light {
+     --background: 0 0% 100%;
+     --foreground: 222.2 84% 4.9%;
+     ... etc ...
+  } 
+  */
+}
+
+/* -------------------------------------------------------------------------- */
+/* BASE STYLES                                 */
+/* -------------------------------------------------------------------------- */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* UTILITIES                                  */
+/* -------------------------------------------------------------------------- */
+
+@layer utilities {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-border/30;
+  }
+
+  .glass-strong {
+    @apply bg-card/80 backdrop-blur-2xl border border-border/40;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  /* Custom Scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted));
+    border-radius: 3px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* ANIMATIONS                                  */
+/* -------------------------------------------------------------------------- */
+
+/* Typing animation */
+@keyframes typing-dot {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+.typing-dot {
+  animation: typing-dot 1.4s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Fade in animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.3s ease-out forwards;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(145 40% 45% / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(145 40% 45% / 0.4);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
